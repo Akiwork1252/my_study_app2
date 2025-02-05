@@ -1,0 +1,13 @@
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.my-div-style {
+    margin-top: 6rem;
+}
