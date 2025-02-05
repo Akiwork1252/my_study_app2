@@ -1,0 +1,21 @@
+{% extends "ascension/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}ログイン{% endblock title %}
+{% block active_login %}active{% endblock active_login %}
+
+{% block contents %}
+<div class='container d-flex justify-content-center'>
+    <div class='row col-12 col-md'>
+        <h1 class='text-center mb-4'>ログイン</h1>
+        <form action="{% url 'account_login' %}" method='POST'>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% if redirect_field_value %}
+                <input type="hidden" name='{{ redirect_field_name }}' value='{{ redirect_field_value }}'>
+            {% endif %}
+            <button class='btn btn-primary' type='submit'>ログイン</button>
+        </form>
+    </div>
+</div>
+{% endblock contents %}

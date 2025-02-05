@@ -17,6 +17,10 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static "css/styles.css" %}" rel="stylesheet" />
+
+        <!--My Style-->
+        <link rel="stylesheet" type='text/css' href="{% static "css/mystyle.css" %}">
+        {% block head %}{% endblock head %}
     </head>
     <body id='page-top'>
         <div id='wrapper'>
@@ -25,11 +29,16 @@
             <nav id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand"><a href="#page-top">ASCENSION</a></li>
-                    <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
-                    <li class="sidebar-nav-item"><a href="#about">About</a></li>
-                    <li class="sidebar-nav-item"><a href="#services">Services</a></li>
-                    <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                    <li class="sidebar-nav-item"><a href="#contact">問い合わせ</a></li>
+                    <li class="sidebar-nav-item"><a href="{% url 'ascension:index' %}">Home</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="sidebar-nav-item"><a href="#about">カテゴリ画面</a></li>
+                        <li class="sidebar-nav-item"><a href="#services">お気に入り</a></li>
+                        <li class="sidebar-nav-item"><a href="{% url 'account_logout' %}">ログアウト</a></li>
+                    {% else %}
+                        <li class='sidebar-nav-item'><a href="{% url 'account_login' %}">ログイン</a></li>
+                        <li class='sidebar-nav-item'><a href="{% url 'account_signup' %}">サインアップ</a></li>
+                    {% endif %}
+                    <li class="sidebar-nav-item"><a href="{% url 'ascension:inquiry' %}" class='nav-link {% block active_inquiry %}{% endblock %}'>問い合わせ</a></li>
                 </ul>
             </nav>
             {% block header %}{% endblock header %}
