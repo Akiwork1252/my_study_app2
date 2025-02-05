@@ -21,6 +21,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'django_bootstrap5',
+    'ai_support.apps.AiSupportConfig',
+    'learning.apps.LearningConfig',
+    'learning_test.apps.LearningTestConfig',
+    'analytics.apps.AnalyticsConfig',
 ]
 
 MIDDLEWARE = [
