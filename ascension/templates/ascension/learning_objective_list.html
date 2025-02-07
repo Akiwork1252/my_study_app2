@@ -1,0 +1,36 @@
+{% extends "ascension/base.html" %}
+{% load static %}
+
+{% block title %}学習目標一覧{% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static "css/clean-blog.css" %}">
+{% endblock head %}
+
+{% block contents %}
+<div class='container px-4 px-lg-5'>
+    <div class='text-center'>
+        <h1>{{ request.user.username }}</h1><br>
+        <h2>〜{{ category.name }}の学習目標一覧〜</h2>
+    </div>
+    <!--学習目標リスト-->
+    <div class='justify-content-center'>
+        <div>
+            {% for learning_objective in learning_objectives %}
+                <div class='post-preview'>
+                    <a href="" >
+                        {{ learning_objective.title }}
+                    </a>
+                    <a href="#" class='btn btn-danger'>削除</a>
+                </div>
+                <hr>
+            {% empty %}
+                <p>学習目標がありません。</p>
+            {% endfor %}
+            <div>
+                <a href="{% url 'ascension:create_learning_objective' category.id %}" class='btn btn-primary'>新規作成</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contents %}

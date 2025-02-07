@@ -1,0 +1,43 @@
+{% extends "ascension/base.html" %}
+{% load static %}
+
+{% block title %}興味分野一覧|ASCENSION{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static "css/clean-blog.css" %}">
+{% endblock head %}
+
+{% block contents %}
+<div class='container px-4 px-lg-5'>
+    <div>
+        <h1>{{ request.user.username }}の興味分野</h1><br>
+    </div>
+    <!--カテゴリ削除時にメッセージを表示-->
+    {% if messages %}
+        <div class=''>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        <br>
+    {% endif %}
+    <!--興味分野リスト-->
+    <div class='justify-content-center'>
+        <div class=''>
+            {% for category in object_list %}
+                <div class='post-preview'>
+                    <a href="{% url 'ascension:learning_objective_list' category.id %}">
+                        <h3>{{ category.name }}</h3>
+                    </a>
+                    <a href="{% url 'ascension:delete_interest_category' category.id %}" class='btn btn-danger btn-sm'>削除</a>
+                </div>
+                <hr>
+            {% empty %}
+                <p>興味分野がありません。</p>
+            {% endfor %}
+            <div>
+                <a href="{% url 'ascension:add_interest_category' %}" class='btn btn-primary'>追加</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contents %}

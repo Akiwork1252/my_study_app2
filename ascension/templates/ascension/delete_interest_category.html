@@ -1,0 +1,22 @@
+{% extends "ascension/base.html" %}
+{% load static %}
+
+{% block title %}興味分野の削除{% endblock title %}
+
+{% block contents %}
+<div class='container'>
+    <div class='row text-center'>
+        <div class='text-center'>
+            <h1>興味分野の削除</h1><br>
+        </div>
+        <form method='POST' action="{% url 'ascension:delete_interest_category' category.id %}">
+            {% csrf_token %}
+            <p>
+                カテゴリ"<strong>{{ category.name }}</strong>"を削除すると含まれる全ての学習データが削除されます。本当に削除しますか？
+            </p>
+            <button type='submit' class='btn btn-primary mt-5'>削除</button>
+            <a href="{% url 'ascension:interest_category_list' %}" class='btn btn-secondary mt-5'>キャンセル</a>
+        </form>
+    </div>
+</div>
+{% endblock contents %}
