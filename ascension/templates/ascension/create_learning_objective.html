@@ -1,0 +1,18 @@
+{% extends "ascension/base.html" %}
+
+{% block title %}学習目標作成|ASCENSION{% endblock title %}
+
+{% block contents %}
+<div class='container d-flex justify-content-center'>
+    <div class='col-12 col-md-7'>
+        <div class='row text-center'>
+            <h1>学習目標の作成</h1><br>
+        </div>
+        <form method='POST' action="{% url 'ascension:create_learning_objective' category.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </form>
+        <button type='submit' class='btn btn-primary'>作成</button>
+    </div>
+</div>
+{% endblock contents %}

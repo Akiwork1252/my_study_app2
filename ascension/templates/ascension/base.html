@@ -31,7 +31,7 @@
                     <li class="sidebar-brand"><a href="#page-top">ASCENSION</a></li>
                     <li class="sidebar-nav-item"><a href="{% url 'ascension:index' %}">Home</a></li>
                     {% if user.is_authenticated %}
-                        <li class="sidebar-nav-item"><a href="#about">カテゴリ画面</a></li>
+                        <li class="sidebar-nav-item"><a href="{% url 'ascension:interest_category_list' %}">カテゴリ画面</a></li>
                         <li class="sidebar-nav-item"><a href="#services">お気に入り</a></li>
                         <li class="sidebar-nav-item"><a href="{% url 'account_logout' %}">ログアウト</a></li>
                     {% else %}
