@@ -11,8 +11,8 @@
         <form method='POST' action="{% url 'ascension:create_learning_objective' category.id %}">
             {% csrf_token %}
             {{ form.as_p }}
+            <button type='submit' class='btn btn-primary'>作成</button>
         </form>
-        <button type='submit' class='btn btn-primary'>作成</button>
     </div>
 </div>
 {% endblock contents %}
